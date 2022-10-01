@@ -21,6 +21,7 @@ func formHandler(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "Name = %s\n", name)
 	fmt.Fprintf(w, "Address = %s\n", address)
 }
+
 /// Handle request from user
 ///
 /// if path supplied by user is not /hello then throw 404
@@ -38,15 +39,19 @@ func helloHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
+	
 	// Return a handler that serves HTTP requests with the contents of the file system rooted at root 
 	fileServer := http.FileServer(http.Dir("./static"))
+	
 	// register the handler
 	http.Handle("/", fileServer)
+
 	// Register the handler function
 	http.HandleFunc("/form", formHandler)
 	http.HandleFunc("/hello", helloHandler)
 
 	fmt.Printf("Starting server at port 8080\n")
+
 	if err:= http.ListenAndServe(":8080", nil); err != nil {
 		log.Fatal(err)
 	}
