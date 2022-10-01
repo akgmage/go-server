@@ -5,6 +5,11 @@ import (
 	"log"
 	"net/http"
 )
+
+/// Parse form
+///
+/// if error is nil print out the [name] and [address] supplied in the form
+
 func formHandler(w http.ResponseWriter, r *http.Request) {
 	if err := r.ParseForm(); err != nil {
 		fmt.Fprintf(w, "Parseform() err: %v", err)
