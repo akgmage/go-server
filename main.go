@@ -6,6 +6,10 @@ import (
 	"net/http"
 )
 
+func hellohandler(w http.ResponseWriter, r *http.Request) {
+	
+}
+
 func main() {
 	fileServer := http.FileServer(http.Dir("./static"))
 	http.Handle("/", fileServer)
