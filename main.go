@@ -21,6 +21,10 @@ func formHandler(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "Name = %s\n", name)
 	fmt.Fprintf(w, "Address = %s\n", address)
 }
+/// Handle request from user
+///
+/// if path supplied by user is not /hello then throw 404
+/// throw Method not supported error if Method is not GET
 
 func helloHandler(w http.ResponseWriter, r *http.Request) {
 	if r.URL.Path != "/hello" {
