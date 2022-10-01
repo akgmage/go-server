@@ -38,8 +38,11 @@ func helloHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
+	// Return a handler that serves HTTP requests with the contents of the file system rooted at root 
 	fileServer := http.FileServer(http.Dir("./static"))
+	// register the handler
 	http.Handle("/", fileServer)
+	// Register the handler function
 	http.HandleFunc("/form", formHandler)
 	http.HandleFunc("/hello", helloHandler)
 
